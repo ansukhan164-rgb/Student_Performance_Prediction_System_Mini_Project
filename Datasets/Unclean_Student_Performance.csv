@@ -1,0 +1,31 @@
+Student ID,Name,Attendance,Past Score,Assignment,Study Hrs/Wk,Backlogs,Target Score
+STU001, Rahul Sharma,85%,72,80,12,0,78
+STU002,Priya Singh,90,88,95,15,0,92
+STU003,Amit Kumar,65%,55,60,5,2,58
+STU004,Neha Verma,,78,85,10,0,82
+STU005,Rohit Gupta,110%,45,50,3,3,49
+STU006,Anjali Patel,75,67,,8,1,70
+STU007,Vikas Yadav,80%,72,75,10,0,76
+STU008, Sneha Roy,95,92,90,18,0,95
+STU009,Arjun Mehta,60,40,45,4,4,42
+STU010,Pooja Sharma,88%,85,88,14,0,89
+STU011,Karan Singh,70,58,65,6,2,61
+STU012,Meena Kumari,92,90,95,20,0,96
+STU013,Sameer Khan,50%,35,40,2,5,38
+STU014,Divya Joshi,78,68,72,9,1,71
+STU015,Aditya Mishra,85,76,80,12,0,79
+STU016, Riya Das,90%,89,92,16,0,93
+STU017,Manish Kumar,45,30,35,1,6,32
+STU018,Simran Kaur,82,75,78,11,0,80
+STU019,Abhishek Jain,70%,60,55,7,2,63
+STU020, Kavita Rao,98,95,100,22,0,98
+STU021,STU021,65,50,55,5,3,54
+STU022,Deepak Verma,85%,80,85,13,0,84
+STU023,Farhan Ali,55,42,48,3,4,45
+STU024,Muskan Gupta,90,88,90,17,0,91
+STU025,Harsh Raj,75%,65,70,8,1,68
+STU026,Ananya Sen,80,72,78,10,0,76
+STU027, ,60,45,50,4,3,48
+STU028,Akash Patel,95%,90,95,19,0,96
+STU029,Reena Sharma,70,62,68,-5,2,65
+STU030, Rahul Sharma,85,72,80,12,0,78

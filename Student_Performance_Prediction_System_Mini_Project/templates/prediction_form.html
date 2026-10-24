@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Predict Examination Score - Ansar Student Performance AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="max-w-3xl mx-auto">
+    <div class="card border-0 shadow-lg p-4 rounded-4">
+      <h3 class="fw-extrabold mb-1">Student Exam Score Prediction</h3>
+      <p class="text-muted small mb-4">Input academic metrics to calculate real-time exam score using Machine Learning.</p>
+
+      <form method="post" action="{% url 'prediction_form' %}">
+        {% csrf_token %}
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Class Attendance Rate (%)</label>
+            <input type="number" name="attendance_percentage" class="form-control" min="0" max="100" value="85" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Past Examination Marks (Out of 100)</label>
+            <input type="number" name="past_exam_score" class="form-control" min="0" max="100" value="75" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Assignment / Practical Score (Out of 100)</label>
+            <input type="number" name="assignment_score" class="form-control" min="0" max="100" value="80" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Weekly Self-Study Hours</label>
+            <input type="number" name="study_hours_per_week" class="form-control" min="0" max="40" value="14" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label fw-semibold">Active Backlog Subjects</label>
+            <input type="number" name="previous_backlogs" class="form-control" min="0" max="10" value="0" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-sm mt-4">
+          <i class="bi bi-calculator me-1"></i> Calculate ML Exam Score Prediction
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

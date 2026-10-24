@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile - Ansar Student Performance AI{% endblock %}
+
+{% block header_title %}Account Profile & Information{% endblock %}
+
+{% block content %}
+<div class="container-fluid max-w-4xl mx-auto py-2">
+  <div class="card border-0 shadow-sm p-4 rounded-4 bg-body-tertiary mb-4">
+    <div class="d-flex items-center justify-between flex-wrap gap-3">
+      <div class="d-flex items-center gap-3">
+        <div class="rounded-circle bg-primary text-white fw-bold d-flex items-center justify-center fs-3" style="width: 56px; height: 56px;">
+          {{ user.get_full_name|slice:":1" }}
+        </div>
+        <div>
+          <h4 class="fw-bold mb-1">{{ user.get_full_name }}</h4>
+          <span class="badge bg-indigo-500 text-uppercase fw-bold" style="font-size: 11px;">{{ user.role|title }} Account</span>
+          <span class="text-muted font-mono ms-2" style="font-size: 12px;">UID: {{ user.university_uid }}</span>
+        </div>
+      </div>
+
+      <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill font-bold">
+        <i class="bi bi-shield-check me-1"></i> Authorized & Active
+      </span>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm p-4 rounded-4">
+    <h5 class="fw-bold mb-4">University Credentials</h5>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="p-3 rounded-3 bg-body-tertiary border">
+          <small class="text-muted d-block mb-1">University Register UID</small>
+          <span class="fw-bold font-mono text-body fs-6">{{ user.university_uid }}</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-3 rounded-3 bg-body-tertiary border">
+          <small class="text-muted d-block mb-1">Registered Email</small>
+          <span class="fw-bold text-body fs-6">{{ user.email }}</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-3 rounded-3 bg-body-tertiary border">
+          <small class="text-muted d-block mb-1">Department</small>
+          <span class="fw-bold text-body fs-6">{{ user.department }}</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="p-3 rounded-3 bg-body-tertiary border">
+          <small class="text-muted d-block mb-1">Member Since</small>
+          <span class="fw-bold text-body fs-6">{{ user.created_at|date:"M d, Y" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

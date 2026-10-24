@@ -1,0 +1,6 @@
+{
+  "name": "Ansar Student Performance AI",
+  "description": "An intelligent educational analytics platform that helps schools analyze student academic data, predict examination performance, monitor academic progress, and train machine learning models.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

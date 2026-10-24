@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction Result - Ansar Student Performance AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="max-w-3xl mx-auto">
+    <div class="card border-0 shadow-lg p-5 rounded-4 text-center">
+      <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-3 py-2 rounded-pill mx-auto mb-3">
+        Official Prediction Result
+      </span>
+
+      <h1 class="display-3 fw-extrabold text-primary mb-1">{{ record.predicted_score }} <span class="fs-4 text-muted">/ 100</span></h1>
+      <h4 class="fw-bold text-dark mb-4">Category: <span class="badge bg-success px-3 py-2">{{ record.performance_category }}</span></h4>
+
+      <div class="row g-3 text-start bg-body-tertiary p-4 rounded-3 mb-4">
+        <div class="col-md-6">
+          <p class="mb-1 text-muted small">Student Name</p>
+          <h6 class="fw-bold">{{ record.student.get_full_name }}</h6>
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1 text-muted small">University Register UID</p>
+          <h6 class="fw-bold">{{ record.student.university_uid }}</h6>
+        </div>
+        <div class="col-md-4">
+          <p class="mb-1 text-muted small">Attendance Rate</p>
+          <h6 class="fw-bold">{{ record.attendance_percentage }}%</h6>
+        </div>
+        <div class="col-md-4">
+          <p class="mb-1 text-muted small">Weekly Study Hours</p>
+          <h6 class="fw-bold">{{ record.study_hours_per_week }} hrs</h6>
+        </div>
+        <div class="col-md-4">
+          <p class="mb-1 text-muted small">Backlogs</p>
+          <h6 class="fw-bold">{{ record.previous_backlogs }}</h6>
+        </div>
+      </div>
+
+      <div class="text-start mb-4">
+        <h5 class="fw-bold mb-3">Academic Recommendations</h5>
+        <ul class="list-group list-group-flush">
+          {% for rec in recommendations %}
+            <li class="list-group-item bg-transparent"><i class="bi bi-check-circle-fill text-success me-2"></i> {{ rec }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="d-flex justify-content-center gap-3">
+        <a href="{% url 'download_pdf' record.id %}" class="btn btn-primary rounded-pill fw-bold px-4">
+          <i class="bi bi-download me-1"></i> Download PDF Academic Report
+        </a>
+        <a href="{% url 'prediction_form' %}" class="btn btn-outline-secondary rounded-pill fw-bold px-4">
+          Predict Another Student
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

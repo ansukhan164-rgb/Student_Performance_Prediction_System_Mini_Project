@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}ML Workbench - Ansar Student Performance AI{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="fw-bold mb-1">Machine Learning Workbench</h2>
+  <p class="text-muted mb-4">Train regression models and evaluate performance metrics (R², MAE, MSE, RMSE).</p>
+
+  <div class="row g-4">
+    <div class="col-md-5">
+      <div class="card border-0 shadow-sm p-4 rounded-4">
+        <h5 class="fw-bold mb-3">Train New Algorithm</h5>
+        <form method="post" action="{% url 'model_training' %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Model Title</label>
+            <input type="text" name="model_name" class="form-control" placeholder="e.g. Random Forest v2.0" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Select ML Algorithm</label>
+            <select name="algorithm" class="form-select">
+              <option value="random_forest">Random Forest Regressor</option>
+              <option value="gradient_boosting">Gradient Boosting Regressor</option>
+              <option value="decision_tree">Decision Tree Regressor</option>
+              <option value="linear_regression">Linear Regression</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill">
+            Train ML Model
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="card border-0 shadow-sm p-4 rounded-4">
+        <h5 class="fw-bold mb-3">Trained Machine Learning Models</h5>
+        {% if models %}
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Model Name</th>
+                  <th>Algorithm</th>
+                  <th>R² Score</th>
+                  <th>MAE</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for m in models %}
+                  <tr>
+                    <td class="fw-semibold">{{ m.name }}</td>
+                    <td>{{ m.get_algorithm_display }}</td>
+                    <td><span class="badge bg-success-subtle text-success fw-bold">{{ m.r2_score }}</span></td>
+                    <td>{{ m.mae }}</td>
+                    <td>
+                      {% if m.is_active %}
+                        <span class="badge bg-success">Active</span>
+                      {% else %}
+                        <a href="{% url 'set_active_model' m.id %}" class="btn btn-sm btn-outline-primary">Activate</a>
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <div class="text-center py-4 text-muted">
+            <i class="bi bi-cpu fs-1 d-block mb-2"></i>
+            No trained models found. Select an algorithm to train a new model.
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

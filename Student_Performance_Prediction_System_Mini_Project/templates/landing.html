@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Ansar Student Performance AI - Home{% endblock %}
+
+{% block content %}
+<div class="container py-5 text-center">
+  <div class="max-w-3xl mx-auto py-4">
+    <span class="badge bg-primary-subtle text-primary fw-bold text-uppercase px-3 py-2 rounded-pill mb-3">
+      BCA Data Mining & Machine Learning Platform
+    </span>
+    <h1 class="display-4 fw-extrabold mb-3">
+      Predict Examination Scores with <span class="text-primary">Machine Learning</span>
+    </h1>
+    <p class="lead text-muted mb-4">
+      An intelligent educational analytics platform designed for teachers and students to upload academic datasets, evaluate ML regression models, and generate real-time exam score predictions.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 mb-5">
+      {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Open Dashboard</a>
+        <a href="{% url 'prediction_form' %}" class="btn btn-outline-secondary btn-lg px-4 rounded-pill fw-bold">Predict Exam Score</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4 rounded-pill fw-bold">Login with University UID</a>
+        <a href="{% url 'signup' %}" class="btn btn-outline-primary btn-lg px-4 rounded-pill fw-bold">Register Account</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row g-4 mt-4 text-start">
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm p-4">
+        <div class="rounded-circle bg-primary-subtle text-primary p-3 d-inline-block mb-3" style="width: 50px; height: 50px;">
+          <i class="bi bi-people-fill fs-4"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Role-Based Workspaces</h5>
+        <p class="text-muted small">Dedicated Teacher workspace for dataset management and model training, and Student portal for instant score predictions.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm p-4">
+        <div class="rounded-circle bg-success-subtle text-success p-3 d-inline-block mb-3" style="width: 50px; height: 50px;">
+          <i class="bi bi-cpu-fill fs-4"></i>
+        </div>
+        <h5 class="fw-bold mb-2">ML Workbench</h5>
+        <p class="text-muted small">Evaluate Random Forest, Gradient Boosting, Decision Tree, and Linear Regression algorithms with R², MAE, MSE, and RMSE metrics.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm p-4">
+        <div class="rounded-circle bg-purple-subtle text-purple p-3 d-inline-block mb-3" style="width: 50px; height: 50px;">
+          <i class="bi bi-file-earmark-pdf-fill fs-4"></i>
+        </div>
+        <h5 class="fw-bold mb-2">PDF Academic Reports</h5>
+        <p class="text-muted small">Generate and download official PDF/Text academic performance reports containing ML predictions and targeted study plans.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Ansar Student Performance AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-lg p-4 rounded-4">
+        <div class="text-center mb-4">
+          <h3 class="fw-extrabold">Create Account</h3>
+          <p class="text-muted small">Register as Teacher or Student for University Access</p>
+        </div>
+
+        <form method="post" action="{% url 'signup' %}">
+          {% csrf_token %}
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">University UID</label>
+              {{ form.university_uid }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Account Role</label>
+              {{ form.role }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">First Name</label>
+              {{ form.first_name }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Last Name</label>
+              {{ form.last_name }}
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold">University Email</label>
+              {{ form.email }}
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold">Department</label>
+              {{ form.department }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Password</label>
+              <input type="password" name="password1" class="form-control" placeholder="Set Password" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Confirm Password</label>
+              <input type="password" name="password2" class="form-control" placeholder="Confirm Password" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 py-2.5 fw-bold rounded-pill shadow-sm mt-4">
+            Register Account
+          </button>
+        </form>
+
+        <div class="text-center mt-4">
+          <p class="text-muted small">Already registered? <a href="{% url 'login' %}" class="fw-bold text-decoration-none">Sign In Here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

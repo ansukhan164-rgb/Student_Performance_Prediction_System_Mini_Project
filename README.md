@@ -386,6 +386,11 @@ Add a suitable open-source license to the repository if you intend to distribute
 
 GitHub: [@ansukhan164-rgb](https://github.com/ansukhan164-rgb)
 
+Demo:
+https://ansar-student-performance-ai.vercel.app/
+
+
+
 Project Repository:
 
 [Student Performance Prediction System Mini Project](https://github.com/ansukhan164-rgb/Student_Performance_Prediction_System_Mini_Project)
